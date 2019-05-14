@@ -22,10 +22,10 @@ Installation:
 For all users (needs root password)
 
 cd cell_list_v4.2_package
-sudo python setup.py install
+sudo python3.4 setup.py install
 
 For current user only
-python setup.py install --user
+python3.4 setup.py install --user
 
 
 Note: you may need to install setuptools if not provided by default
@@ -40,7 +40,7 @@ distance_list=cl.cell_list()
 ==================================================
 Successful run should print similar to this:
 
-Reading file:  /usr/local/lib/python2.7/dist-packages/cell_list_v4.2-3.2-py2.7.egg/cell_list/input/1QJA.pdb
+Reading file:  /usr/local/lib/python3.4/dist-packages/cell_list_v4.2-3.2-py3.4.egg/cell_list/input/1QJA.pdb
 
 Mesh with following no of mesh points in (x,y,z) created:  ( 10 11 10 )
 Mesh Origin:  ( -16.773 , -39.231 , 8.043 )

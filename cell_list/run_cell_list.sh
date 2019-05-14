@@ -2,5 +2,4 @@
 #bash run_cell_list.sh
 
 #To run the software for only CA and NZ atoms
-python ./src/main.py -f ./input/1QJA.pdb -o ./output/output_distance.txt --cutoff 8.0 --atomtypes "CA CB" --restypes "MET LYS"
-
+python3.4 ./src/main.py -f ./input/1QJA.pdb -o ./output/output_distance.txt --cutoff 8.0 --atomtypes "CA CB" --restypes "ALL"

@@ -47,10 +47,10 @@ def create_mesh(param,loc,cutoff):
     mesh=[xarray,yarray,zarray,xn,yn,zn,origin,loc]
     
     #Print the MEsh Statistics#
-    print "\nMesh with following no of mesh points in (x,y,z) created: ","(",xn,yn,zn,")"
-    print "Mesh Origin: ", "(",origin[0],",",origin[1],",",origin[2],")"
-    print "Length of square cell/cutoff: ", loc
-    print "Total no of cells: ",xn*yn*zn,"\n"
+    print ("\nMesh with following no of mesh points in (x,y,z) created: ","(",xn,yn,zn,")")
+    print ("Mesh Origin: ", "(",origin[0],",",origin[1],",",origin[2],")")
+    print ("Length of square cell/cutoff: ", loc)
+    print ("Total no of cells: ",xn*yn*zn,"\n")
     
     #Return the Mesh#
     return mesh

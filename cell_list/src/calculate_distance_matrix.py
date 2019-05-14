@@ -30,6 +30,8 @@ def calculate_distance(cell_list,cmesh,nghdict,cutoff):
         #get the neighbors indexs for the current cell
         for idx in nghdict[i]:
             #Get the current coordinate set 2
+            #print(idx,cell_list[0])
+            
             coord_set2=cell_list[idx];
             
             #For each atom in the coordinate sets 1,2 calculate the distance
@@ -40,10 +42,11 @@ def calculate_distance(cell_list,cmesh,nghdict,cutoff):
                     #If square of the distance is less than the square of the cutoff distnace, then calculate the distance by taking the square root.
                     if (square_distance < square_cutoff):
                         distance=math.sqrt(square_distance)
+                        distance = round(distance,3)
                         
                         #Format the string to right in the output file
                         outline+=str(coord1[3])+":"+str(coord1[4])+":"+str(coord1[5])+":"+str(coord1[6])+"\t"+str(coord2[3])+":"+str(coord2[4])+":"+str(coord2[5])+":"+str(coord2[6])+"\t"+str(distance)+"\n";
-                
+            
     #return the output line
     return outline
 

@@ -91,11 +91,10 @@ def parse_pdb(inf,atomtypes,restypes):
                 atom_props.append([xc,yc,zc,atom_type,res_name,res_num,chain_num]);
     
     if len(atom_props)==0:
-        print "Error: Atoms not found in the list."
-        print "Make sure your PDB file is read properly."
+        print ("Error: Atoms not found in the list.")
+        print ("Make sure your PDB file is read properly.")
         sys.exit(0)
     #Return            
-    print maxz
     return minx,maxx,miny,maxy,minz,maxz,atom_props
 
 
