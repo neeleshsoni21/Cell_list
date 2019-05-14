@@ -1,0 +1,35 @@
+"""
+Copyright (C) 2013 Neelesh Soni <neelesh.soni@alumni.iiserpune.ac.in>, <neelrocks4@gmail.com>
+This file is part of celllist.
+
+celllist is free software: you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+
+celllist is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public License along with celllist.  If not, see <http://www.gnu.org/licenses/>.
+"""
+
+**********************
+Software Information
+**********************
+
+Cell_list is a tool for finding all the neighbors of any atoms within some cutoff distance efficiently. This tool uses “cell list algorithm” whose time complexity order of N (Θ(N)). This tool is especially helpful for large proteins where one has to find the neighbors repeatedly. Determining the neighbors could be required at many places, for instance, for calculating the atomic clashes between atoms, for calculating the electrostatic energy for a set of dynamic atoms etc.
+
+
+***********************
+Copyright Information
+***********************
+Copyright (C) 2014 Neelesh Soni <neelesh.soni@alumni.iiserpune.ac.in>
+This file is part of celllist.
+
+celllist is free software: you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+
+celllist is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public License along with celllist.  If not, see <http://www.gnu.org/licenses/>.
+
+
+**********************
+Installation
+**********************
+Please refer to INSTALL file in the distribution

@@ -1,0 +1,1 @@
+sudo rm -rf build/ cell_list_v4.2.egg-info/ dist/

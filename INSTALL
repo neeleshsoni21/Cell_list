@@ -1,0 +1,80 @@
+"""
+Copyright (C) 2013 Neelesh Soni <neelesh.soni@alumni.iiserpune.ac.in>, <neelrocks4@gmail.com>
+This file is part of celllist.
+
+celllist is free software: you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+
+celllist is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public License along with celllist.  If not, see <http://www.gnu.org/licenses/>.
+"""
+
+***************************
+Installation and Execution
+***************************
+
+
+Option 1: To install cell_list as independent module. (RECOMMENDED)
+
+**************
+Installation:
+**************
+For all users (needs root password)
+
+cd cell_list_v4.2_package
+sudo python setup.py install
+
+For current user only
+python setup.py install --user
+
+
+Note: you may need to install setuptools if not provided by default
+sudo apt-get install python-setuptools
+
+*************************************************
+Testing the Installtion with default parameters:
+*************************************************
+import cell_list as cl
+distance_list=cl.cell_list()
+
+==================================================
+Successful run should print similar to this:
+
+Reading file:  /usr/local/lib/python2.7/dist-packages/cell_list_v4.2-3.2-py2.7.egg/cell_list/input/1QJA.pdb
+
+Mesh with following no of mesh points in (x,y,z) created:  ( 10 11 10 )
+Mesh Origin:  ( -16.773 , -39.231 , 8.043 )
+Length of square cell/cutoff:  8.0
+Total no of cells:  1100 
+
+Calculating distances...
+
+Writing the output file...
+
+Time elapsed =  2.74687600136 s
+==================================================
+
+
+**************************************
+Executing the cell_list in your code:
+**************************************
+import cell_list as cl
+distance_list=cl.cell_list(<inputfile>, <outputfile>, <cutoff>, <atomtypes>, <residuetypes>)
+
+where 
+<inputfile> is the input pdb file 
+<outputfile> is the output file for output
+<cutoff> is the cutoff provided to the cell list algorithm 
+<atomtypes> is the list of atom types. "ALL" (for all atomtypes) or "CA CB CG" (for specific atomtypes)
+<residuetypes> is the list of residue types. "ALL" (for all residue types) or "LYS ARG HIS" (for specific residue types)
+
+
+
+
+
+Option 2: To run cell_list independenly (NOT RECOMMENDED). For developers only
+cd cell_list_v4.2_package/cell_list
+bash run_cell_list.sh
+
+You can change the execution parameters in the run_cell_list.sh file
+

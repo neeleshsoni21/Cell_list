@@ -1,0 +1,6 @@
+
+#ignore all python compiled files
+*.pyc
+
+#ignore all cell_list generated output
+cell_list/output/
