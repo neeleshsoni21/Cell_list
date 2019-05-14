@@ -22,7 +22,7 @@ def calculate_distance(cell_list,cmesh,nghdict,cutoff):
     #Calculates the square of the cutoff
     square_cutoff=cutoff*cutoff;
     outline=""
-    
+    counter=0;
     #Iterate through all cells in the Mesh
     for i in range(0,cmax):
         #Get the coordinate set 1
@@ -40,9 +40,8 @@ def calculate_distance(cell_list,cmesh,nghdict,cutoff):
                     #If square of the distance is less than the square of the cutoff distnace, then calculate the distance by taking the square root.
                     if (square_distance < square_cutoff):
                         distance=math.sqrt(square_distance)
-                        
                         #Format the string to right in the output file
-                        outline+=str(coord1[3])+":"+str(coord1[4])+":"+str(coord1[5])+":"+str(coord1[6])+"\t"+str(coord2[3])+":"+str(coord2[4])+":"+str(coord2[5])+":"+str(coord2[6])+"\t"+str(distance)+"\n";
+                        outline+=str(coord1[3])+":"+str(coord1[4])+":"+str(coord1[5])+":"+str(coord1[6])+":"+str(coord1[7])+"\t"+str(coord2[3])+":"+str(coord2[4])+":"+str(coord2[5])+":"+str(coord2[6])+":"+str(coord2[7])+"\t"+str(distance)+"\n";
                 
     #return the output line
     return outline

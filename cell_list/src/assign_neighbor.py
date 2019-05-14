@@ -43,6 +43,7 @@ def assign_ngh(mesh):
                 for idsz in -1,0,1:
                     #Get index in each dimension
                     xid,yid,zid=(mix+idsx),(miy+idsy),(miz+idsz);
+
                     #Check if each index is less than the maximum number of cells in that direction and if each index is greater than -1
                     if((xid < xn)&(xid > -1)):
                         if((yid < yn)&(yid > -1)):
@@ -51,6 +52,7 @@ def assign_ngh(mesh):
                                 index=zn*yn*xid + yid*zn +zid;
                                 #Append the mesh index in the nighbor list 
                                 temp_nghlst.append(index)
+
         
         #Add the temp neighbor list in the dictionary
         nghdict[lstidx]=temp_nghlst;

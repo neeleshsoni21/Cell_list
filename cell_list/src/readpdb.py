@@ -55,6 +55,7 @@ def parse_pdb(inf,atomtypes,restypes):
             res_name=l[17:20].strip();
             res_num=l[22:26].strip();
             chain_num=l[21:22].strip();
+            atom_num=l[6:11].strip();
 
             #check if current atom to consider or not
             code=mycode[flag1]
@@ -88,7 +89,7 @@ def parse_pdb(inf,atomtypes,restypes):
                     maxz=zc;
                 
                 #Append the atom_coord with each atom properties
-                atom_props.append([xc,yc,zc,atom_type,res_name,res_num,chain_num]);
+                atom_props.append([xc,yc,zc,atom_type,res_name,res_num,chain_num,atom_num]);
     
     if len(atom_props)==0:
         print "Error: Atoms not found in the list."
