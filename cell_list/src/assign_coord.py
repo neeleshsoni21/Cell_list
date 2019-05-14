@@ -37,7 +37,7 @@ def assign_atomlist_to_mesh(mesh,atom_props,cell_lst):
         
         #z-y-x major
         index=zn*yn*ix + iy*zn +iz;
-        #print index
+        
         #append the mesh cell with coordinate & its properties
         cell_lst[index].append(c);
         #Return cell list

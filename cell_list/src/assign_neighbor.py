@@ -24,7 +24,7 @@ def assign_ngh(mesh):
     
     #Iterating through total number of cells
     for lstidx in range(0,totcell):
-                
+        
         #calculate the x,y,z index using the mesh indexes. This is possible because the mesh indexes are z then y then x major. Here we are unwinding the mesh in x,y and z direction
         r=lstidx%(yn*zn);
         #get mesh x index
@@ -43,14 +43,16 @@ def assign_ngh(mesh):
                 for idsz in -1,0,1:
                     #Get index in each dimension
                     xid,yid,zid=(mix+idsx),(miy+idsy),(miz+idsz);
+
                     #Check if each index is less than the maximum number of cells in that direction and if each index is greater than -1
                     if((xid < xn)&(xid > -1)):
                         if((yid < yn)&(yid > -1)):
                             if((zid < zn)&(zid > -1)):
                                 #Recalculate the mesh index
-                                index=int(zn*yn*xid + yid*zn +zid);
+                                index=zn*yn*xid + yid*zn +zid;
                                 #Append the mesh index in the nighbor list 
                                 temp_nghlst.append(index)
+
         
         #Add the temp neighbor list in the dictionary
         nghdict[lstidx]=temp_nghlst;
