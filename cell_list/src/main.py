@@ -29,10 +29,10 @@ def run_cell_list(arguments):
     #Open the input file for parsing.#
     inf2=open(input_file,'r');
     
-    print ("Reading file: ",input_file)
+    print "Reading file: ",input_file
 
     #parse_pdb function returns the details of all atoms in the pdb file with maximum and minimum value of coordinates in each direction. All these values gets stored in the 'param' list#
-    param=parse_pdb(inf2,arguments[3],arguments[4]);
+    param=parse_pdb(inf2,arguments[3],arguments[4],arguments[5]);
     
     #close the file#
     inf2.close();
@@ -68,15 +68,15 @@ def run_cell_list(arguments):
     ngh_dict=assign_ngh(cmesh);
     
     
-    print ("Calculating distances...\n")
+    print "Calculating distances...\n"
     #Calculate the dictance of all the atoms that are withion cutoff distance. This function stores the distances with atom identities in the outline string.#
-    outline=calculate_distance(cell_list,cmesh,ngh_dict,cutoff)
+    outline=calculate_distance(cell_list,cmesh,ngh_dict,cutoff,arguments[5])
     
     
     #Getting the output file name#
     output_file=arguments[1];
     
-    print ("Writing the output file...\n")
+    print "Writing the output file...\n"
     
     #Open the output file for writing the distances#
     fname=output_file
@@ -90,7 +90,7 @@ def run_cell_list(arguments):
 def cell_list(inputfile=sys.path[-1]+'/input/1QJA.pdb', 
     outputfile=sys.path[-1]+'/output/output_distance.txt', 
     cutoff=8.0, atomtypes='CA', 
-    residuetypes='ALL'):
+    residuetypes='ALL', refchain='ALL'):
     
     import time
     
@@ -98,13 +98,13 @@ def cell_list(inputfile=sys.path[-1]+'/input/1QJA.pdb',
     start_time=time.time()
     
     #Create argument list
-    arguments=[inputfile,outputfile,float(cutoff),atomtypes.split(' '),residuetypes.split(' ')]
+    arguments=[inputfile,outputfile,float(cutoff),atomtypes.split(' '),residuetypes.split(' '),refchain.split(' ')]
     
     #Execute Cell_list function
     outlines=run_cell_list(arguments);
     
     #Get the total time elapsed#
-    print ('Time elapsed = ', time.time() - start_time, 's')
+    print 'Time elapsed = ', time.time() - start_time, 's'
     
     return outlines
 
@@ -124,7 +124,7 @@ def main():
     run_cell_list(arguments);
 
     #Get the total time elapsed#
-    print ('Time elapsed = ', time.time() - start_time, 's')
+    print 'Time elapsed = ', time.time() - start_time, 's'
     
     return
   

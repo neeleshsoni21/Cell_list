@@ -12,7 +12,7 @@ You should have received a copy of the GNU Lesser General Public License along w
 This routine reads the pdb file given as input and then return the coordinates and corresponding atom identities.
 '''
 import sys
-def parse_pdb(inf,atomtypes,restypes):
+def parse_pdb(inf,atomtypes,restypes,refchain):
     
     #read the pdb file#
     lines=inf.readlines();
@@ -28,13 +28,16 @@ def parse_pdb(inf,atomtypes,restypes):
     #Initiallizing the atom_props variable
     atom_props=[]
     
-    #Set flag for type of atom and residue types
+    #Set flag for type of atom, residue and chain types
     flag1=False;
     flag2=False;
+    flag3=False;
     if atomtypes[0]=="ALL":
         flag1=True;
     if restypes[0]=="ALL":
         flag2=True;
+    if refchain[0]=="ALL":
+        flag3=True;
     
     #Create a dictionary for type of code to run, Case 1 will return True always, 
     #Case 2 will check for the type and then return
@@ -57,45 +60,60 @@ def parse_pdb(inf,atomtypes,restypes):
             chain_num=l[21:22].strip();
             atom_num=l[6:11].strip();
 
+            #check if current residue to consider or not
+            code=mycode[flag2]
+            resflag=code(res_name,restypes)
+
+            if resflag == False:
+                continue
+
             #check if current atom to consider or not
             code=mycode[flag1]
             atomflag=code(atom_type,atomtypes)
             #print atom_type,atomtypes,atomflag
-            
-            #check if current residue to consider or not
-            code=mycode[flag2]
-            resflag=code(res_name,restypes)
-            
-            
-            #If both atom and residue are to be considered then execute
-            if (atomflag & resflag) == True:
+                        
+            if atomflag == False:
+                continue
 
-                #Getting the max, min of x direction
-                if minx>xc:
-                    minx=xc;
-                if maxx<xc:
-                    maxx=xc;
+            #print chain_num, res_name, atom_type
+            
+            #Append the atom_coord with each atom properties
+            atom_props.append([xc,yc,zc,atom_type,res_name,res_num,chain_num,atom_num]);
+
+
+            #check if current chain to consider or not for mesh calculation
+            code=mycode[flag3];
+            chainflag=code(chain_num,refchain)
+            
+            if chainflag == False:
+                continue
+            
+            #Getting the max, min of x direction for mesh
+            if minx>xc:
+                minx=xc;
+            if maxx<xc:
+                maxx=xc;
+            
+            #Getting the max, min of y direction for mesh
+            if miny>yc:
+                miny=yc;
+            if maxy<yc:
+                maxy=yc;
                 
-                #Getting the max, min of y direction
-                if miny>yc:
-                    miny=yc;
-                if maxy<yc:
-                    maxy=yc;
+            #Getting the max, min of z direction for mesh
+            if minz>zc:
+                minz=zc;
+            if maxz<zc:
+                maxz=zc;
                 
-                #Getting the max, min of z direction
-                if minz>zc:
-                    minz=zc;
-                if maxz<zc:
-                    maxz=zc;
-                
-                #Append the atom_coord with each atom properties
-                atom_props.append([xc,yc,zc,atom_type,res_name,res_num,chain_num,atom_num]);
+            
     
     if len(atom_props)==0:
-        print ("Error: Atoms not found in the list.")
-        print ("Make sure your PDB file is read properly.")
+        print "Error: Atoms not found in the list."
+        print "Make sure your PDB file is read properly."
         sys.exit(0)
     #Return            
+    #print maxz
     return minx,maxx,miny,maxy,minz,maxz,atom_props
 
 

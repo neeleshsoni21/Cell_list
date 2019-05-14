@@ -23,6 +23,8 @@ def addoptions():
     parser.add_option('--cutoff', type="float", help='Cutoff for the distance calculation');
     parser.add_option('--atomtypes', type="string", help='Atomtypes to consider for the distance calculations, for default type ALL');
     parser.add_option('--restypes', type="string", help='Residuetypes to consider for the distance calculations, for default type ALL');
+    parser.add_option('--refchain', type="string", help='Reference chain to consider for distance calculations, for default type ALL');
+
     args, remainder = parser.parse_args()
     
     #Check if number of arguments are correct or not.
@@ -35,7 +37,8 @@ def addoptions():
     cutoff= args.cutoff;
     atomtypes= args.atomtypes.split(' ');
     restypes= args.restypes.split(' ');
-    
+    refchain= args.refchain.split(' ');
+
     #return the input and output files
-    return fname,oname,cutoff,atomtypes,restypes
+    return fname,oname,cutoff,atomtypes,restypes,refchain
 

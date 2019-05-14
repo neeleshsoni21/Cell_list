@@ -34,10 +34,16 @@ def assign_atomlist_to_mesh(mesh,atom_props,cell_lst):
         iy=int((c[1]-origin[1])/loc)
         iz=int((c[2]-origin[2])/loc)
         
-        
+        #print (xn-ix),(yn-iy), (zn-iz), c[6], ix, iy, iz
+        if ((ix < 0) | (ix >= xn)):
+            continue;
+        if ((iy < 0) | (iy >= yn)):
+            continue;
+        if ((iz < 0) | (iz >= zn)):
+            continue;
         #z-y-x major
         index=zn*yn*ix + iy*zn +iz;
-        
+        #print index
         #append the mesh cell with coordinate & its properties
         cell_lst[index].append(c);
         #Return cell list

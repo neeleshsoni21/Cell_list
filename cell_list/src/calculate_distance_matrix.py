@@ -11,7 +11,7 @@ You should have received a copy of the GNU Lesser General Public License along w
 This routine calculates the distance between all the atoms in the cell_list variable
 '''
 import math
-def calculate_distance(cell_list,cmesh,nghdict,cutoff):
+def calculate_distance(cell_list,cmesh,nghdict,cutoff,refchain):
     
     #get the total number of cells in each dircetion and the total numbers
     cxn=cmesh[3]
@@ -40,9 +40,10 @@ def calculate_distance(cell_list,cmesh,nghdict,cutoff):
                     #If square of the distance is less than the square of the cutoff distnace, then calculate the distance by taking the square root.
                     if (square_distance < square_cutoff):
                         distance=math.sqrt(square_distance)
-                        distance = round(distance,3)
-                        #Format the string to right in the output file
-                        outline+=str(coord1[3])+":"+str(coord1[4])+":"+str(coord1[5])+":"+str(coord1[6])+":"+str(coord1[7])+"\t"+str(coord2[3])+":"+str(coord2[4])+":"+str(coord2[5])+":"+str(coord2[6])+":"+str(coord2[7])+"\t"+str(distance)+"\n";
+                        #check if only one atom is from reference chain
+                        if (coord1[6]==refchain[0]) != (coord2[6]==refchain[0]):
+                            #Format the string to right in the output file
+                            outline+=str(coord1[3])+":"+str(coord1[4])+":"+str(coord1[5])+":"+str(coord1[6])+":"+str(coord1[7])+"\t"+str(coord2[3])+":"+str(coord2[4])+":"+str(coord2[5])+":"+str(coord2[6])+":"+str(coord2[7])+"\t"+str(distance)+"\n";
                 
     #return the output line
     return outline

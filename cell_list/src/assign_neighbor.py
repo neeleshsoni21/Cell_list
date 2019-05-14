@@ -28,11 +28,11 @@ def assign_ngh(mesh):
         #calculate the x,y,z index using the mesh indexes. This is possible because the mesh indexes are z then y then x major. Here we are unwinding the mesh in x,y and z direction
         r=lstidx%(yn*zn);
         #get mesh x index
-        mix=int(lstidx/(yn*zn));
+        mix=lstidx/(yn*zn);
         #get mesh z index
         miz=r%zn;
         #get mesh y index
-        miy=int(r/zn);
+        miy=r/zn;
         
         #initializing the temp neighbor list variable
         temp_nghlst=[];
