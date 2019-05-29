@@ -10,8 +10,8 @@ You should have received a copy of the GNU Lesser General Public License along w
 """
 from setuptools import setup
 
-setup(name='cell_list_v4.2',
-      version='3.2',
+setup(name='cell_list_v4.3',
+      version='4.3',
       description='Cell_list code to determine the distances between neighbors',
       url='http://192.168.8.252:8080/Neelesh_cell_list',
       author='Neelesh Soni',
