@@ -3,4 +3,4 @@
 *.pyc
 
 #ignore all cell_list generated output
-cell_list/output/
+cell_list/output/*
