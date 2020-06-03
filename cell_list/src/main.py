@@ -17,11 +17,11 @@ import sys
 
 def run_cell_list(arguments):
     
-    from readpdb import parse_pdb
-    from mesh import create_mesh
-    from assign_coord import assign_atomlist_to_mesh
-    from assign_neighbor import assign_ngh
-    from calculate_distance_matrix import calculate_distance
+    from src.readpdb import parse_pdb
+    from src.mesh import create_mesh
+    from src.assign_coord import assign_atomlist_to_mesh
+    from src.assign_neighbor import assign_ngh
+    from src.calculate_distance_matrix import calculate_distance
 
     #Getting the input file name#
     input_file=arguments[0];
@@ -112,7 +112,7 @@ def main():
     #Importing modules from the current directory#
     import sys
     import time
-    from addoptions import addoptions
+    from src.addoptions import addoptions
     
     #Getting the start time#
     start_time=time.time()
