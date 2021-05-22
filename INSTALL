@@ -22,10 +22,10 @@ Installation:
 For all users (needs root password)
 
 cd cell_list_v4.2_package
-sudo python3.4 setup.py install
+sudo python setup.py install
 
 For current user only
-python3.4 setup.py install --user
+python setup.py install --user
 
 
 Note: you may need to install setuptools if not provided by default
